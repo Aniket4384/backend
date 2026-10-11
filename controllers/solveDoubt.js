@@ -85,7 +85,11 @@ RESPONSE RULES:
 
     res.end();
   } catch (error) {
-    console.error("Groq Error:", error.message);
+    console.error("Groq error details:", {
+  message: error.message,
+  status: error.status,
+  code: error.code,
+});
 
     if (!res.headersSent) {
       return res.status(500).json({
